@@ -79,4 +79,72 @@ if (galleries.length) {
   window.addEventListener("resize", scheduleChoices);
   window.addEventListener("pageshow", scheduleChoices);
   updateChoices();
+
+  const desktopMotion = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+  let wheelFrame = 0;
+  let lastFrameTime = 0;
+  let position = 0;
+  let target = 0;
+  let lastScrollY = 0;
+
+  function stopWheelScroll() {
+    cancelAnimationFrame(wheelFrame);
+    wheelFrame = 0;
+  }
+
+  function advanceWheelScroll(now) {
+    if (!desktopMotion.matches || window.scrollY !== lastScrollY) {
+      stopWheelScroll();
+      return;
+    }
+
+    const settle = Math.abs(target - position) < 1;
+    const elapsed = Math.max(0, now - lastFrameTime);
+    const progress = 1 - Math.exp(-elapsed / 65);
+    position = settle ? target : position + (target - position) * progress;
+    lastFrameTime = now;
+    window.scrollTo({ top: position, behavior: "instant" });
+    lastScrollY = window.scrollY;
+    wheelFrame = settle ? 0 : requestAnimationFrame(advanceWheelScroll);
+  }
+
+  function scrollWithMomentum(event) {
+    const { deltaMode, deltaX, deltaY } = event;
+    if (!desktopMotion.matches || !event.cancelable || event.defaultPrevented || event.ctrlKey || event.metaKey ||
+        event.shiftKey || event.altKey || Math.abs(deltaX) >= Math.abs(deltaY)) return;
+
+    const current = window.scrollY;
+    if (wheelFrame && current !== lastScrollY) stopWheelScroll();
+
+    const unit = deltaMode === WheelEvent.DOM_DELTA_LINE ? 16
+      : deltaMode === WheelEvent.DOM_DELTA_PAGE ? window.innerHeight : 1;
+    const delta = deltaY * unit;
+    const continuing = wheelFrame && Math.sign(target - current) === Math.sign(delta);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const next = Math.min(max, Math.max(0, (continuing ? target : current) + delta));
+    if (next === current && !wheelFrame) return;
+
+    event.preventDefault();
+    target = next;
+    if (wheelFrame) return;
+
+    position = lastScrollY = current;
+    lastFrameTime = performance.now();
+    wheelFrame = requestAnimationFrame(advanceWheelScroll);
+  }
+
+  function syncWheelScroll() {
+    if (desktopMotion.matches) {
+      window.addEventListener("wheel", scrollWithMomentum, { passive: false });
+    } else {
+      window.removeEventListener("wheel", scrollWithMomentum);
+      stopWheelScroll();
+    }
+  }
+
+  desktopMotion.addEventListener("change", syncWheelScroll);
+  window.addEventListener("keydown", stopWheelScroll);
+  window.addEventListener("pointerdown", stopWheelScroll, { passive: true });
+  window.addEventListener("pagehide", stopWheelScroll);
+  syncWheelScroll();
 }

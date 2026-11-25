@@ -413,17 +413,17 @@ main:focus { outline: 0; }
       inset: 0;
       animation: archive-shutter cubic-bezier(.53, .08, .45, .97) both;
       animation-timeline: --archive-open;
-      animation-range: entry 62% contain 78%;
+      animation-range: contain 12% contain 86%;
     }
     .exhibit-window img {
       animation: archive-unveil ease-out both;
       animation-timeline: --archive-open;
-      animation-range: entry 67% contain 88%;
+      animation-range: contain 17% contain 94%;
     }
-    .archive-exhibit:nth-child(2) .exhibit-window::after { animation-range-start: entry 13%; animation-range-end: contain 55%; }
-    .archive-exhibit:nth-child(2) img { animation-range-start: entry 22%; animation-range-end: contain 64%; }
-    .archive-exhibit:nth-child(3) .exhibit-window::after { animation-range-start: entry 80%; animation-range-end: contain 100%; }
-    .archive-exhibit:nth-child(3) img { animation-range-start: entry 85%; animation-range-end: contain 100%; }
+    .archive-exhibit:nth-child(2) .exhibit-window::after { animation-range: entry 92% contain 66%; }
+    .archive-exhibit:nth-child(2) img { animation-range: entry 96% contain 74%; }
+    .archive-exhibit:nth-child(3) .exhibit-window::after { animation-range: contain 32% contain 100%; }
+    .archive-exhibit:nth-child(3) img { animation-range: contain 37% contain 100%; }
     .product-card .product-photo {
       animation: archive-card-arrive ease-out both;
       animation-timeline: view();
@@ -448,7 +448,7 @@ main:focus { outline: 0; }
     }
     .exhibit-window img {
       position: sticky;
-      top: max(calc(var(--header) + 1rem), 44vh);
+      top: max(calc(var(--header) + 1rem), 38vh);
       height: calc(.78 * var(--exhibit-height));
       margin-inline: auto;
     }
@@ -459,6 +459,9 @@ main:focus { outline: 0; }
     .archive-exhibit:nth-child(2) .exhibit-window { --shutter-cover: .43; }
     .archive-exhibit:nth-child(3) .exhibit-window { --shutter-cover: .72; }
   }
+
+  .archive-exhibit a:focus-visible .exhibit-window::after { display: none; }
+  .archive-exhibit a:focus-visible img { animation: none; }
 }
 
 @media (prefers-reduced-motion: no-preference) and (min-height: 30rem) {
