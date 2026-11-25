@@ -497,11 +497,24 @@ main:focus { outline: 0; }
     .gallery .taste-step {
       --fade-start: calc(var(--stop) - var(--interval));
       --fade-end: calc(var(--stop) + var(--interval));
+      --can-rest: perspective(700px) rotate(-8deg);
       grid-area: 1 / 1;
       align-self: start;
       border-color: transparent;
       background: none;
       pointer-events: none;
+    }
+    .gallery .taste-step:first-of-type {
+      --enter-opacity: 1;
+      --enter-pointer: auto;
+      --can-enter: var(--can-rest);
+      --caption-enter: 0px;
+    }
+    .gallery .taste-step:last-of-type {
+      --exit-opacity: 1;
+      --exit-pointer: auto;
+      --can-exit: var(--can-rest);
+      --caption-exit: 0px;
     }
     .taste-step::before {
       content: "";
@@ -528,6 +541,12 @@ main:focus { outline: 0; }
       animation-name: taste-caption;
       animation-timing-function: steps(1, jump-end);
     }
+    @media (width < 43rem) {
+      .taste-step :is(.step-meter, .step-copy) {
+        animation-name: mobile-taste-caption;
+        animation-timing-function: linear;
+      }
+    }
     .swatches a::after {
       animation: current-choice linear;
       animation-timeline: --gallery;
@@ -545,19 +564,35 @@ main:focus { outline: 0; }
 @keyframes current-choice { from, to { opacity: 1; } }
 
 @keyframes taste-fade {
-  0%, 100% { opacity: 0; }
+  from { opacity: var(--enter-opacity, 0); }
   39%, 61% { opacity: 1; }
+  to { opacity: var(--exit-opacity, 0); }
 }
 
 @keyframes taste-caption {
-  0%, 75%, 100% { opacity: 0; pointer-events: none; }
+  from { opacity: var(--enter-opacity, 0); pointer-events: var(--enter-pointer, none); }
   25% { opacity: 1; pointer-events: auto; }
+  75%, to { opacity: var(--exit-opacity, 0); pointer-events: var(--exit-pointer, none); }
+}
+
+@keyframes mobile-taste-caption {
+  0%, 25% {
+    opacity: var(--enter-opacity, 0);
+    pointer-events: var(--enter-pointer, none);
+    translate: 0 var(--caption-enter, .85rem);
+  }
+  30%, 70% { opacity: 1; pointer-events: auto; translate: 0 0; }
+  75%, 100% {
+    opacity: var(--exit-opacity, 0);
+    pointer-events: var(--exit-pointer, none);
+    translate: 0 var(--caption-exit, -.85rem);
+  }
 }
 
 @keyframes can-pass {
-  from { transform: perspective(700px) translateX(16%) rotate(12deg) rotateY(-35deg) scale(.83); }
-  42%, 58% { transform: perspective(700px) rotate(-8deg); }
-  to { transform: perspective(700px) translateX(-16%) rotate(-17deg) rotateY(35deg) scale(.83); }
+  from { transform: var(--can-enter, perspective(700px) translateX(16%) rotate(12deg) rotateY(-35deg) scale(.83)); }
+  42%, 58% { transform: var(--can-rest); }
+  to { transform: var(--can-exit, perspective(700px) translateX(-16%) rotate(-17deg) rotateY(35deg) scale(.83)); }
 }
 
 @keyframes form-line {
