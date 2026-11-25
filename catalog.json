@@ -1,30 +1,30 @@
 {
   "designs": [
-    {"slug":"original-2005","name":"2005","series":"Перша банка","notes":"Синя банка з червоними дугами й жовтим логотипом навскіс. У такому оформленні бренд стартував в Україні.","color":"#ffd755"},
-    {"slug":"original-2009","name":"2009","series":"Перший редизайн","notes":"Жовтий логотип і червоні дуги лишилися. У центрі з’явився білий напис, а біля дна — позначка Original.","color":"#ff806d"},
-    {"slug":"original-2012","name":"2012","series":"Хрестик і білий логотип","notes":"Червоний знак із хрестиком винесли над білий напис NON STOP. Під ним — маленька червона плашка Original.","color":"#8cc0ff"},
-    {"slug":"original-2014","name":"2014","series":"Піксельне коло","notes":"На синьому тлі з’явилося світле коло з піксельним краєм. Назва NON STOP стала червоною.","color":"#bceaff"},
-    {"slug":"original-2018","asset":"original","name":"2018","series":"Синя геометрія","notes":"Блакитні й темно-сині грані, сріблясті вставки та червона плашка Original. Цей дизайн упізнається й на сучасній банці.","color":"#5ad4ff"}
+    {"slug":"original-2005","name":"2005","notes":"На першій банці жовтий логотип стояв навскіс між червоними дугами.","color":"#ffd755"},
+    {"slug":"original-2009","name":"2009","notes":"Під жовтим логотипом з’явився напис natural energy drink, а біля дна — позначка Original.","color":"#ff806d"},
+    {"slug":"original-2012","name":"2012","notes":"Червоний знак із хрестиком опинився над білим написом NON STOP.","color":"#8cc0ff"},
+    {"slug":"original-2014","name":"2014","notes":"Червоний логотип перенесли у світле коло з піксельним краєм.","color":"#bceaff"},
+    {"slug":"original-2018","asset":"original","name":"2018","notes":"Сучасну банку досі видають сині грані, сріблясті вставки й червона плашка Original.","color":"#5ad4ff"}
   ],
   "flavors": [
-    {"slug":"original","name":"Original","series":"Класична серія","notes":"Класичний смак енергетика.","color":"#5ad4ff"},
-    {"slug":"jungle","name":"Jungle","series":"Фруктова серія","notes":"Суниця та м’ята.","color":"#8ee967"},
-    {"slug":"boost","name":"Boost","series":"Фруктова серія","notes":"Ананас, лічі, гуава й розмарин.","color":"#ed85e9"},
-    {"slug":"zoom","name":"Zoom","series":"Фруктова серія","notes":"Кавун і м’ята.","color":"#f5f175"},
-    {"slug":"zero","name":"Original Zero Sugar","series":"Zero Sugar","notes":"Класичний смак без цукру.","color":"#a9caff"},
-    {"slug":"spark","name":"Spark Zero Sugar","series":"Zero Sugar","notes":"Ананас без цукру.","color":"#ffc75f"},
-    {"slug":"splash","name":"Splash","series":"Juice Series","notes":"Апельсин, персик і груша. З натуральним соком.","color":"#ffab5a"}
+    {"slug":"original","name":"Original","notes":"З цього смаку у 2005 році почався український NON STOP.","color":"#5ad4ff"},
+    {"slug":"jungle","name":"Jungle","notes":"Стигла суниця з прохолодною м’ятою.","color":"#8ee967"},
+    {"slug":"boost","name":"Boost","notes":"Ананас, лічі та гуава з пряною нотою розмарину.","color":"#ed85e9"},
+    {"slug":"zoom","name":"Zoom","notes":"Солодкий кавун із м’ятною прохолодою.","color":"#f5f175"},
+    {"slug":"zero","name":"Original Zero Sugar","notes":"Смак Original у версії без цукру.","color":"#a9caff"},
+    {"slug":"spark","name":"Spark Zero Sugar","notes":"Виразний смак ананаса у версії без цукру.","color":"#ffc75f"},
+    {"slug":"splash","name":"Splash","series":"Juice Series","notes":"Апельсин, персик і груша в напої з натуральним соком.","color":"#ffab5a"}
   ],
   "limited": [
-    {"slug":"stalker","name":"S.T.A.L.K.E.R.","series":"S.T.A.L.K.E.R. · Limited Edition","notes":"Кавун. Перша банка серії за мотивами S.T.A.L.K.E.R. 2.","color":"#ff9c63"},
-    {"slug":"moonlight","name":"Moonlight","series":"S.T.A.L.K.E.R. · Limited Edition","notes":"Манго та груша.","color":"#b0a1ff"},
-    {"slug":"stalker-green","name":"Green","series":"S.T.A.L.K.E.R. · Limited Edition","notes":"Ожина, м’ята та лайм.","color":"#b6f55e"},
-    {"slug":"stalker-red","name":"Red","series":"S.T.A.L.K.E.R. · Limited Edition","notes":"Вишня з нотами рому й ананаса.","color":"#ff7591"}
+    {"slug":"stalker","name":"S.T.A.L.K.E.R.","notes":"Кавунова лімітка, яку представили в Києві у 2023 році.","color":"#ff9c63"},
+    {"slug":"moonlight","name":"Moonlight","notes":"Солодке манго в парі з грушею.","color":"#b0a1ff"},
+    {"slug":"stalker-green","name":"Green","notes":"Зелена банка з фігурою в протигазі з колаборації з GSC Game World.","color":"#b6f55e"},
+    {"slug":"stalker-red","name":"Red","notes":"Вишня з ромовою нотою та ананасовим післясмаком.","color":"#ff7591"}
   ],
   "shots": [
-    {"slug":"shot-original","series":"NON STOP Shot · 60 мл","name":"Original","notes":"Ягідно-трав’яний смак.","color":"#ad9dff"},
-    {"slug":"shot-tropic","series":"NON STOP Shot · 60 мл","name":"Tropic","notes":"Тропічні фрукти.","color":"#fb83d7"},
-    {"slug":"shot-orange","series":"NON STOP Shot · 60 мл","name":"Orange Vibe","notes":"Цитрус, трави та прянощі.","color":"#ffaf63"}
+    {"slug":"shot-original","name":"Original","notes":"Ягідний смак із трав’яними нотами.","color":"#ad9dff"},
+    {"slug":"shot-tropic","name":"Tropic","notes":"Свіжий мікс тропічних фруктів.","color":"#fb83d7"},
+    {"slug":"shot-orange","name":"Orange Vibe","notes":"Цитрусовий смак із травами й пряними нотами.","color":"#ffaf63"}
   ],
   "archive": [
     {"slug":"cola","category":"early","name":"Cola","notes":"Смак коли.","color":"#ee9463","formats":"250, 500 та 750 мл","detail":"Один із ранніх смаків NON STOP. У брендбуці поруч із першими банками Original є дві червоні банки Cola. Пізніше цей смак з’явився й у ПЕТ-пляшці."},
@@ -34,10 +34,10 @@
     {"slug":"night","category":"early","name":"Night","notes":"Темна банка із серії Day і Night.","color":"#a6a4ff","formats":"250 та 500 мл","detail":"Випуск із добірки 2014 року. На темній банці Night білий логотип оточує червоно-блакитне піксельне коло. Поруч у лінійці був світлий Day."},
     {"slug":"ultra","category":"experiments","name":"Ultra","notes":"Лічі, гуава й м’ята.","color":"#ff9d6f","formats":"500 мл","detail":"Колишній смак української фруктової лінійки NON STOP. У брендбуці Ultra є в добірці паковань за 2021 рік. На банці помаранчеві й бордові грані, а в післясмаку від лічі та гуави відчувалася м’ятна прохолода.","source":"https://old.newproducts.com/uk/trademarks/nonstop/","source_label":"Ultra в архівному каталозі виробника"},
     {"slug":"urban","category":"experiments","name":"Urban","notes":"Малина, асаї та шизандра.","color":"#e797ed","formats":"250 та 500 мл","detail":"Urban представили 2018 року разом із Jungle у концепції «Міські джунглі». Нічну сторону міста передали фіолетовими гранями, а в напої поєднали малину, асаї та екстракт шизандри.","source":"https://old.newproducts.com/uk/novyj-kontsept-bezalkogolnogo-energetyka-non-stop-vid-gk-novi-produkty-miski-dzhungli/","source_label":"Презентація «Міських джунглів»"},
-    {"slug":"evo-coconut","category":"experiments","name":"EVO Coconut","notes":"Кокос.","color":"#b2caff","formats":"250 та 500 мл","detail":"Кокосова версія Evolution є в добірці 2020 року. На білій банці великий червоний напис EVO і менша позначка COCONUT WATER."},
-    {"slug":"evo-baobab","category":"experiments","name":"EVO Baobab","notes":"Лайм, баобаб і грейпфрут.","color":"#ffb468","formats":"250 та 500 мл","detail":"Друга банка серії Evolution має зелений напис EVO. До смаку лайма, баобаба й грейпфрута додали екстракти гінкго й баобаба та гуарану.","source":"https://content1.rozetka.com.ua/goods/documents/original/27489861.pdf","source_label":"Презентація EVO Baobab (PDF)"},
-    {"slug":"green-energy","category":"experiments","name":"Green Energy","notes":"З екстрактом насіння канабісу.","color":"#a7d186","formats":"250 та 500 мл","detail":"Напій Green Energy з екстрактом насіння канабісу виробник запустив 2018 року. Брендбук показує пізніший дизайн із назвою NON STOP Green Energy у двох розмірах."},
+    {"slug":"evo-coconut","category":"experiments","name":"EVO Coconut","notes":"Банка з позначкою Coconut Water.","color":"#b2caff","formats":"250 та 500 мл","detail":"EVO Coconut є в добірці 2020 року. На білій банці великий червоний напис EVO і менша позначка COCONUT WATER."},
+    {"slug":"evo-baobab","category":"experiments","name":"EVO Baobab","notes":"Лайм, баобаб і грейпфрут.","color":"#ffb468","formats":"250 та 500 мл","detail":"На білій банці EVO Baobab назву серії надрукували зеленим. Архівний каталог виробника описує смак як поєднання лайма, баобаба й грейпфрута.","source":"https://old.newproducts.com/trademarks/nonstop/","source_label":"Evolution в архівному каталозі виробника"},
+    {"slug":"green-energy","category":"experiments","name":"Green Energy","notes":"Випуск із екстрактом насіння канабісу.","color":"#a7d186","formats":"250 та 500 мл","detail":"У 2018 році виробник представив Green Energy з екстрактом насіння канабісу. У брендбуці NON STOP цей напій з’являється в добірці паковань за 2021 рік.","source":"https://ua.newproducts.com/etapi-rozvitku-2/","source_label":"Запуск Green Energy в історії виробника"},
     {"slug":"military","category":"limited","name":"Military Edition","notes":"Лімітований дизайн 2022 року.","color":"#d8cd8b","formats":"500 мл","detail":"Лімітка в добірці 2022 року. На банці в кольорах хакі напис MILITARY EDITION замінив звичну червону плашку Original."},
-    {"slug":"anniversary","category":"limited","name":"20 Years","notes":"Ювілейна лімітка з вишневим соком та екстрактом какао.","color":"#f3c477","formats":"500 мл","detail":"До 20-річчя NON STOP випустив окрему лімітовану банку. Число 20 винесли на передній бік, а до напою додали вишневий сік та екстракт какао.","source":"https://epicentrk.ua/ua/shop/enerhetychnyi-napii-non-stop-limited-edition-20-years-0-5-l.html","source_label":"Банка й склад у каталозі"}
+    {"slug":"anniversary","category":"limited","name":"20 Years","notes":"Срібляста банка з написом 20 Years Limited Edition.","color":"#f3c477","formats":"500 мл","detail":"На сріблястій банці навколо логотипа розсипані кольорові фрагменти, а під ним стоїть напис 20 Years Limited Edition.","source":"https://epicentrk.ua/ua/shop/enerhetychnyi-napii-non-stop-limited-edition-20-years-0-5-l.html","source_label":"Фото паковання в каталозі"}
   ]
 }

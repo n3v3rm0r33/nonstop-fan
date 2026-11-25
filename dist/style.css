@@ -95,7 +95,7 @@ main:focus { outline: 0; }
 .limited .chapter-intro h2 { color: var(--ice); }
 
 .gallery {
-  --controls: 5.65rem;
+  --controls: calc(5.65rem + env(safe-area-inset-bottom));
   --plate: #0a101d;
   display: grid;
 }
@@ -118,14 +118,14 @@ main:focus { outline: 0; }
   justify-items: center;
   align-items: center;
   gap: .12rem .75rem;
-  padding-block: .18rem .36rem;
+  padding-block: .18rem calc(.36rem + env(safe-area-inset-bottom));
 }
 .swatches { display: flex; justify-content: center; max-width: 100%; }
 .swatches a {
   position: relative;
   display: grid;
   place-items: center;
-  width: clamp(1.75rem, 9.5vw, 2.75rem);
+  width: clamp(2.55rem, 11.25vw, 2.75rem);
   min-height: 2.75rem;
   color: var(--text);
   font: 700 .68rem/1 var(--display);
@@ -134,14 +134,14 @@ main:focus { outline: 0; }
 }
 .swatch-dot { width: .65rem; aspect-ratio: 1; border-radius: 50%; background: var(--accent); }
 .swatches a::after { content: ""; position: absolute; inset: 50% auto auto 50%; width: 1.4rem; aspect-ratio: 1; translate: -50% -50%; border: 1px solid var(--accent); border-radius: 50%; opacity: 0; pointer-events: none; }
-.swatches a:is(:hover, :focus-visible)::after { opacity: 1; }
+.swatches a:is(:hover, :focus-visible, [aria-current="true"])::after { opacity: 1; }
 .swatches-labeled { gap: .25rem; }
 .swatches-labeled a { min-width: clamp(2.65rem, 11.1vw, 4.2rem); width: auto; padding-inline: .5rem; border: 1px solid #9abdd940; border-radius: .25rem; background: #0a1322de; }
 .swatches-labeled a::after { inset: -1px; width: auto; aspect-ratio: auto; translate: none; border-radius: inherit; background: color-mix(in srgb, var(--accent) 10%, transparent); }
 .gallery-next { display: grid; grid-auto-flow: column; place-content: center; gap: .35em; min-height: 2.35rem; white-space: nowrap; }
 
 .taste-step {
-  --tint: radial-gradient(ellipse at 52% 39%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 62%);
+  --tint: color-mix(in srgb, var(--accent) 5%, transparent);
   position: relative;
   border-top: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
   background: var(--tint), var(--plate);
@@ -152,15 +152,14 @@ main:focus { outline: 0; }
 }
 .step-inner {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(.45rem, 1.8svh, 1.05rem);
   min-height: min(var(--screen), 44rem);
   padding-block: clamp(.85rem, 3svh, 2rem) clamp(1.15rem, 4svh, 3rem);
 }
-.step-meter { align-self: start; display: flex; align-items: center; gap: .65rem; color: #c5d3e4; font: 700 .69rem/1 var(--display); font-variant-numeric: tabular-nums; }
-.step-meter span { width: 2rem; height: 1px; background: var(--accent); }
-.step-copy { grid-row: 3; }
+.step-meter, .card-arrow, .step-copy .eyebrow:empty { display: none; }
+.step-copy { grid-row: 2; }
 .step-copy :is(h2, h3) {
   margin-block: .22em .18em;
   font: 900 clamp(1.8rem, 9vw, 6.2rem)/1.02 var(--display);
@@ -175,12 +174,12 @@ main:focus { outline: 0; }
   position: relative;
   display: grid;
   place-items: center;
-  grid-row: 2;
+  grid-row: 1;
   min-width: 0;
   height: clamp(9rem, 40svh, 24rem);
   isolation: isolate;
 }
-.step-art::before {
+.flavors .step-art::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -190,7 +189,14 @@ main:focus { outline: 0; }
   border-radius: 50%;
   background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 11%, transparent), transparent 68%);
 }
-.story .step-art::after { content: ""; position: absolute; z-index: -1; width: min(66%, 34svh, 23.5rem); aspect-ratio: 1; border: 1px dashed #88d5ff45; border-radius: 50%; }
+.story .step-art::after {
+  content: "";
+  position: absolute;
+  inset: 12% 14%;
+  z-index: -1;
+  border-block: 1px solid #88d5ff35;
+  background: repeating-linear-gradient(0deg, transparent 0 1.5rem, #88d5ff12 1.5rem calc(1.5rem + 1px));
+}
 .step-art img { position: absolute; inset: 0; margin: auto; width: 70%; height: 88%; object-fit: contain; rotate: -8deg; filter: drop-shadow(0 1.1rem 1.25rem #0009); }
 .shots .step-art { height: clamp(9rem, 37svh, 24rem); }
 
@@ -200,8 +206,7 @@ main:focus { outline: 0; }
 .lineup-cans li { display: grid; flex: 0 0 calc((100% - 3 * var(--can-gap)) / 4); align-items: start; min-width: 0; text-align: center; }
 .lineup-cans a { display: grid; justify-items: center; gap: .35rem; min-width: 0; color: #d6e1f2; font-size: clamp(.57rem, 1.08vw, .73rem); font-weight: 800; line-height: 1.2; text-decoration: none; overflow-wrap: anywhere; }
 .lineup-cans a:hover { color: var(--accent); }
-.lineup-cans img { width: 100%; height: clamp(3.55rem, 12svh, 7.5rem); object-fit: contain; filter: drop-shadow(0 .5rem .55rem #03060dbb); transition: transform .23s; }
-.lineup-cans a:hover img, .lineup-cans a:focus-visible img { transform: translateY(-.35rem); }
+.lineup-cans img { width: 100%; height: clamp(3.55rem, 12svh, 7.5rem); object-fit: contain; filter: drop-shadow(0 .5rem .55rem #03060dbb); }
 
 .shots { background: radial-gradient(ellipse at 12% 0, #19264c6d, transparent 57%), #0b1120; }
 .archive { --ice: #ffd6a0; --line: #3c332c; border-top: 1px solid var(--line); background: #0e0e14; }
@@ -317,12 +322,12 @@ main:focus { outline: 0; }
 #archive-early:checked ~ .product-grid .product-card:not([data-category="early"]),
 #archive-experiments:checked ~ .product-grid .product-card:not([data-category="experiments"]),
 #archive-limited:checked ~ .product-grid .product-card:not([data-category="limited"]) { display: none; }
+#archive-all:checked ~ .product-grid .featured-in-archive { display: none; }
 .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
 .product-card { display: grid; min-width: 0; border: 1px solid var(--line); background: #18151e; }
 .archive-card-link { display: grid; grid-template-rows: auto 1fr; color: inherit; text-decoration: none; }
 .archive-card-link:hover, .archive-card-link:focus-visible { box-shadow: inset 0 0 0 1px var(--accent); }
 .archive-card-link h3 { display: flex; justify-content: space-between; gap: .3rem; }
-.card-arrow { flex: none; font-family: Manrope, sans-serif; line-height: 1; }
 .product-photo { display: grid; place-items: center; height: clamp(7rem, 26vw, 15rem); padding: .9rem; overflow: hidden; background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 24%, transparent), transparent 68%); }
 .product-photo img { width: 100%; height: 100%; min-height: 0; object-fit: contain; filter: drop-shadow(0 .65rem .8rem #03060da8); }
 .product-copy { border-top: 1px solid var(--line); padding: clamp(.67rem, 1.5vw, 1.2rem); }
@@ -342,20 +347,19 @@ main:focus { outline: 0; }
 .site-footer { background: #05080e; border-top: 1px solid var(--line); padding-block: 2rem; }
 .footer-inner { display: grid; gap: 1.2rem; align-items: start; }
 .footer-inner .fan-label { margin-top: .55rem; width: max-content; }
-.demo { border-left: 2px solid #6ec6eb; padding: .25rem 0 .25rem .7rem; color: #cdd7e7; font-size: .81rem; }
+.project-note { color: #cdd7e7; font-size: .81rem; max-width: 34rem; }
+.project-note a { display: inline-block; margin-top: .45rem; color: var(--ice); text-underline-offset: .2em; }
 .sources { display: grid; gap: .3rem; color: #b6def5; font-size: .77rem; }
 .sources a { text-underline-offset: .18em; }
 
 @media (width < 43rem) and (height <= 42rem) {
   .step-art, .shots .step-art { height: clamp(9rem, 33svh, 14rem); }
-  .step-art::before { width: min(82%, 36svh); }
-  .story .step-art::after { width: min(66%, 29svh); }
+  .flavors .step-art::before { width: min(82%, 36svh); }
 }
 
 @media (width < 43rem) and (height <= 34rem) {
   .step-art, .shots .step-art { height: clamp(6.5rem, 26svh, 9rem); }
-  .step-art::before { width: min(82%, 29svh); }
-  .story .step-art::after { width: min(66%, 24svh); }
+  .flavors .step-art::before { width: min(82%, 29svh); }
 }
 
 @media (min-width: 43rem) {
@@ -365,14 +369,12 @@ main:focus { outline: 0; }
   .site-nav a:hover { color: var(--ice); }
   .fan-label { padding: .4rem .65rem; }
   .gallery-controls-inner { display: flex; justify-content: space-between; }
-  .step-inner { grid-template: auto minmax(0, 1fr) / minmax(0, .9fr) minmax(0, 1.1fr); gap: 1.2rem; }
-  .step-meter { grid-column: 1; }
-  .step-copy { grid-row: 2; grid-column: 1; }
+  .step-inner { grid-template: minmax(0, 1fr) / minmax(0, .9fr) minmax(0, 1.1fr); gap: 1.2rem; }
+  .step-copy { grid-row: 1; grid-column: 1; }
   .step-copy :is(h2, h3) { font-size: clamp(2.35rem, 6.05vw, 6.6rem); }
   .story .step-copy h3 { font-size: clamp(3.45rem, 9.8vw, 8.6rem); }
-  .step-art, .shots .step-art { grid-row: 1 / 3; grid-column: 2; height: clamp(13rem, 63svh, 38rem); }
-  .step-art::before { width: min(90%, 64svh, 35rem); }
-  .story .step-art::after { width: min(73%, 52svh, 28.4rem); }
+  .step-art, .shots .step-art { grid-row: 1; grid-column: 2; height: clamp(13rem, 63svh, 38rem); }
+  .flavors .step-art::before { width: min(90%, 64svh, 35rem); }
   .lineup-cans { --can-gap: .45rem; row-gap: 1.3rem; }
   .archive-scene-inner { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(1.5rem, 4vw, 5.5rem); }
   .archive-scene h2 { font-size: clamp(2.5rem, 6.25vw, 5.7rem); }
@@ -390,6 +392,8 @@ main:focus { outline: 0; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .lineup-cans img { transition: transform .23s; }
+  .lineup-cans a:hover img, .lineup-cans a:focus-visible img { transform: translateY(-.35rem); }
   :is(.exhibit-window, .product-photo) img { transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
   :is(.archive-exhibit a, .archive-card-link):is(:hover, :focus-visible) img { transform: translateY(-.25rem) rotate(-5deg) scale(1.07); }
   .exhibit-window { isolation: isolate; }
@@ -466,13 +470,13 @@ main:focus { outline: 0; }
     display: grid;
     align-items: center;
     height: var(--controls);
-    background: linear-gradient(0deg, #080c15 0%, #080c15f2 66%, #080c15dd 100%);
+    background: #080c15;
   }
   .taste-step { position: sticky; top: var(--header); }
   .step-inner { min-height: calc(var(--screen) - 1px); padding-bottom: calc(var(--controls) + clamp(.9rem, 3svh, 1.8rem)); }
 
   @media (min-width: 43rem) {
-    .gallery { --controls: 4.25rem; }
+    .gallery { --controls: calc(4.25rem + env(safe-area-inset-bottom)); }
   }
 
   @supports (animation-timeline: view()) and (view-timeline-name: --gallery) and (animation-range: contain 0% contain 100%) {
@@ -523,7 +527,7 @@ main:focus { outline: 0; }
       z-index: -1;
       background: var(--tint);
     }
-    .taste-step::before, .taste-step :is(.step-art, .step-art img, .step-meter, .step-copy) {
+    .taste-step::before, .taste-step :is(.step-art, .step-art img, .step-copy) {
       animation-fill-mode: both;
       animation-timeline: --gallery;
       animation-range: contain var(--fade-start) contain var(--fade-end);
@@ -537,23 +541,23 @@ main:focus { outline: 0; }
       animation-name: can-pass;
       animation-timing-function: linear;
     }
-    .taste-step :is(.step-meter, .step-copy) {
+    .taste-step .step-copy {
       animation-name: taste-caption;
       animation-timing-function: steps(1, jump-end);
     }
     @media (width < 43rem) {
-      .taste-step :is(.step-meter, .step-copy) {
+      .taste-step .step-copy {
         animation-name: mobile-taste-caption;
         animation-timing-function: linear;
       }
     }
-    .swatches a::after {
+    .swatches:not(:has([aria-current])) a::after {
       animation: current-choice linear;
       animation-timeline: --gallery;
       animation-range: contain var(--from) contain var(--to);
     }
-    .swatches a:first-child::after { animation-fill-mode: backwards; }
-    .swatches a:last-child::after { animation-fill-mode: forwards; }
+    .swatches:not(:has([aria-current])) a:first-child::after { animation-fill-mode: backwards; }
+    .swatches:not(:has([aria-current])) a:last-child::after { animation-fill-mode: forwards; }
     .lineup { min-height: 150svh; view-timeline: --lineup block; }
     .section-scene { position: sticky; top: var(--header); }
     .lineup-cans li { animation: form-line linear both; animation-timeline: --lineup; animation-range: entry 25% contain 72%; }
